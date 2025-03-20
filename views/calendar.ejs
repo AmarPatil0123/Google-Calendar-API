@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Calendar Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">📅 Google Calendar Events</h2>
+
+        <!-- Create Event Button -->
+        <div class="text-end mb-3">
+            <a href="/create" class="btn btn-success">+ Create Event</a>
+        </div>
+
+        <!-- Events List -->
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (events.length === 0) { %>
+                    <tr><td colspan="3" class="text-center">No events found</td></tr>
+                <% } else { %>
+                    <% events.forEach(event => { %>
+                        <tr>
+                            <td><%= event.summary %></td>
+                            <td>
+                                <%= event.start.dateTime ? event.start.dateTime.split('T')[0] : event.start.date %>
+                            </td>
+                            <td>
+                                <%= event.start.dateTime ? event.start.dateTime.split('T')[1].substring(0, 5) : "All Day" %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
