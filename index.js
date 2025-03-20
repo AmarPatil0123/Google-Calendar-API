@@ -8,8 +8,8 @@ app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.urlencoded({ extended: true })); // Middleware to parse form data
 
-app.listen("8080",()=>{
-    console.log("Server listening on port 8080");
+app.listen("3000",()=>{
+    console.log("Server listening on port 3000");
 });
 
 
